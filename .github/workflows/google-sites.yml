@@ -1,0 +1,26 @@
+name: Build Google Sites HTML
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Root Jewels
+        uses: actions/checkout@v4
+      - name: Create self-contained HTML
+        run: python3 scripts/build_google_sites.py
+      - name: Upload Google Sites files
+        uses: actions/upload-artifact@v4
+        with:
+          name: root-jewels-google-sites
+          path: |
+            dist/root-jewels-google-sites.html
+            dist/copy-into-google-sites.txt
+          retention-days: 90
