@@ -1,0 +1,1 @@
+Place gem-01.png through gem-10.png here. Each image is a 128 x 128 transparent PNG. Root names are overlaid by the game.
