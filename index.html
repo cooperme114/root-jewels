@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Root Jewels</title><style>
+:root{font-family:system-ui,Arial,sans-serif;color:#f4f5ff;background:#10172d}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:16px}.game{width:min(100%,640px);background:#1b2545;border:1px solid #4c5c8a;border-radius:20px;padding:18px;box-shadow:0 18px 60px #0006}header{display:flex;justify-content:space-between;align-items:center;gap:10px}h1{margin:0;font-size:clamp(24px,5vw,35px)}.stats{display:flex;gap:16px;font-weight:700}.stats span{display:block;font-size:12px;color:#bac8e9}#status{min-height:28px;color:#d6e3ff;margin:12px 0;text-align:center}.board{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;background:#10182e;border-radius:12px;padding:8px;aspect-ratio:1}.tile{min-width:0;border:1px solid #ffffff55;border-bottom:4px solid #0004;border-radius:9px;color:white;font-weight:800;font-size:clamp(10px,2.6vw,16px);cursor:pointer;text-shadow:0 1px 2px #0009;transition:transform .16s,opacity .16s,box-shadow .16s}.tile{position:relative;isolation:isolate;background:transparent!important;border:0!important;text-shadow:0 1px 3px #000b}.tile::before{content:"";position:absolute;inset:2px;background:var(--gem);clip-path:var(--shape);z-index:-1;filter:drop-shadow(0 2px 2px #0008)}.tile::before{background:linear-gradient(145deg,#ffffffb8 0%,#ffffff48 12%,transparent 35%,#00000016 55%,#00000075 100%),var(--gem);box-shadow:inset 0 3px 3px #ffffffaa,inset -4px -7px 8px #0008,0 3px 4px #0009;filter:drop-shadow(0 2px 2px #0008)}.tile::after{content:"";position:absolute;inset:9% 16% 48% 17%;clip-path:polygon(12% 0,88% 0,100% 65%,50% 100%,0 65%);background:linear-gradient(150deg,#ffffffb8,#ffffff12);opacity:.7;pointer-events:none;z-index:-1}.tile.motion-hidden{visibility:hidden}.tile.hint{outline:3px solid #fff19b;outline-offset:-2px;animation:hintpulse .65s ease-in-out 4}@keyframes hintpulse{50%{box-shadow:0 0 20px 7px #ffe16b;transform:scale(.88)}}.flying-tile{position:absolute;z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;will-change:transform,opacity;transition:transform 320ms cubic-bezier(.2,.75,.3,1),opacity 220ms}.tile.selected{outline:3px solid #ffe778;outline-offset:-3px;transform:scale(.94)}.tile.removing{opacity:.1;transform:scale(.2)}.tile:disabled{cursor:default}.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px}button{font-family:inherit}#restart,#hint,.choice,.modal-action{background:#41578e;color:white;border:1px solid #8497c4;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer}#restart:hover,#hint:hover,.choice:hover,.modal-action:hover{filter:brightness(1.15)}.action-buttons{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.help{font-size:13px;color:#c2d0ed}.overlay{position:fixed;inset:0;background:#060b1bcb;display:grid;place-items:center;padding:16px;z-index:3}.overlay[hidden]{display:none}.modal{width:min(100%,410px);padding:25px;background:#26375e;border:2px solid #7b94d0;border-radius:18px;text-align:center;box-shadow:0 20px 70px #0009}.modal h2{margin:0 0 10px}.modal strong{color:#ffe28a}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.choice{font-size:16px}.feedback{min-height:25px;margin-top:16px;font-weight:700}.footnote{font-size:12px;color:#adbedf;margin-top:8px}.tile[data-root=contra]{--gem:#E74668;--shape:polygon(50% 0%,100% 30%,83% 100%,17% 100%,0% 30%)}.tile[data-root=sen]{--gem:#2879E3;--shape:circle(48% at 50% 50%)}.tile[data-root=mort]{--gem:#8A46D5;--shape:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}.tile[data-root=vita]{--gem:#19A66A;--shape:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0% 50%)}.tile[data-root=sol]{--gem:#F0C747;--shape:polygon(50% 0%,61% 34%,98% 35%,68% 57%,79% 95%,50% 72%,21% 95%,32% 57%,2% 35%,39% 34%)}.tile[data-root=mis]{--gem:#F07828;--shape:polygon(15% 0%,85% 0%,100% 85%,50% 100%,0% 85%)}.tile[data-root=gon]{--gem:#12B7C8;--shape:polygon(50% 0%,95% 23%,95% 77%,50% 100%,5% 77%,5% 23%)}.tile[data-root=scope]{--gem:#D64EB5;--shape:polygon(50% 0%,63% 25%,90% 10%,75% 40%,100% 50%,75% 60%,90% 90%,63% 75%,50% 100%,37% 75%,10% 90%,25% 60%,0% 50%,25% 40%,10% 10%,37% 25%)}.tile[data-root=vac]{--gem:#809D26;--shape:polygon(20% 0%,80% 0%,100% 20%,100% 80%,80% 100%,20% 100%,0% 80%,0% 20%)}.tile[data-root=struct]{--gem:#65758D;--shape:polygon(50% 0%,100% 100%,0% 100%)}.tile[data-root=sol]{color:#202334;text-shadow:none}.tile[data-root=vac]{color:#151f16;text-shadow:none}@media(max-width:420px){.game{padding:10px}.board{gap:3px;padding:5px}.tile{border-radius:5px}.stats{gap:8px}}
+
+/* Bold, high-contrast outlines follow each jewel's silhouette. */
+.tile[data-special="2"]::before{background:linear-gradient(145deg,#ffffffaa,#ffffff18 35%,#0008 100%),var(--gem);filter:drop-shadow(0 0 3px #e8f2ff) drop-shadow(0 0 6px #9ddaff)}
+.tile[data-special="3"]::before{background:linear-gradient(145deg,#ffffffaa,#ffffff18 35%,#0008 100%),var(--gem);filter:drop-shadow(0 0 4px #ffd34e) drop-shadow(0 0 8px #ffac18)}
+.tile[data-special="2"]{--ring:#eaf5ff}
+.tile[data-special="3"]{--ring:#ffcf38}
+.tile[data-special="2"],.tile[data-special="3"]{text-shadow:0 2px 3px #000,0 0 5px #000}
+.tile[data-special="2"]::after,.tile[data-special="3"]::after{content:"";inset:1px;clip-path:var(--shape);background:transparent;border:0;opacity:1;z-index:0;pointer-events:none;filter:drop-shadow(0 0 3px var(--ring))}
+.tile .special-mark{position:absolute;z-index:2;right:2px;bottom:3px;border:2px solid var(--ring);border-radius:6px;background:#14203ee8;color:var(--ring);font-size:clamp(10px,2.2vw,16px);line-height:1;padding:3px 4px;text-shadow:0 1px 2px #000;box-shadow:0 0 0 2px #10172d,0 0 10px var(--ring)}
+.tile[data-special="3"] .special-mark{border-radius:50%}
+.tile.blasting{animation:blast .36s ease-in both}
+@keyframes blast{45%{filter:brightness(2.4);transform:scale(1.12)}100%{opacity:0;transform:scale(.15)}}
+
+/* A real shape-following metallic rim, rather than a tiny badge. */
+.tile[data-special="2"],.tile[data-special="3"]{--ring:#f7f9ff;color:#fff!important;text-shadow:0 2px 3px #000,0 0 5px #000!important}
+.tile[data-special="3"]{--ring:#ffe36a}
+.tile[data-special="2"]::before,.tile[data-special="3"]::before{
+ inset:1px; background:var(--ring);filter:drop-shadow(0 0 5px var(--ring)) drop-shadow(0 0 3px var(--ring));
+}
+.tile[data-special="2"]::after,.tile[data-special="3"]::after{
+ content:"";position:absolute;inset:7px;clip-path:var(--shape);z-index:-1;
+ background:linear-gradient(145deg,#ffffff55,transparent 42%,#00000066),var(--gem);
+ opacity:1;filter:none;pointer-events:none;
+}
+.tile .special-mark{right:0;bottom:0;font-size:clamp(12px,2.8vw,19px);font-weight:900;border:2px solid var(--ring);box-shadow:0 0 12px var(--ring),0 1px 5px #000;}
+.cascade-highlight{animation:cascadeFlash .35s ease-in-out infinite alternate!important;z-index:1}
+@keyframes cascadeFlash{from{filter:brightness(1);transform:scale(1)}to{filter:brightness(2.1) drop-shadow(0 0 10px #ffe97b);transform:scale(1.08)}}
+.cascade-banner{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-5deg);white-space:nowrap;pointer-events:none;color:#ffe86a;font-size:clamp(23px,6vw,43px);font-weight:1000;letter-spacing:1px;text-shadow:0 3px 0 #8b4500,0 6px 12px #000,0 0 22px #ffb900;animation:cascadeIn .9s ease-out both}
+@keyframes cascadeIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(-8deg)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.16) rotate(-5deg)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-65%) scale(1.02) rotate(-5deg)}}
+</style></head><body><main class="game"><header><h1>💎 Root Jewels</h1><div class="stats"><div><span>SCORE</span><output id="score">0</output></div><div><span>MOVES</span><output id="moves">20</output></div></div></header><div id="status" role="status">Swap adjacent roots to make three in a row!</div><div id="board" class="board" role="group" aria-label="Root matching game board"></div><div class="controls"><div class="help">Match roots → define → cascade!<br>Combos earn bonus points. Match 4 for a silver line blast, 5 for a gold cross blast!</div><div class="action-buttons"><button id="hint">💡 Hint</button><button id="restart">New Game</button></div></div></main><div id="overlay" class="overlay" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="question"><h2 id="question"></h2><div id="choices" class="choices"></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="footnote">The match clears even if you miss the answer.</div></div></div><div id="notice" class="overlay" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="notice-title"><h2 id="notice-title"></h2><p id="notice-body"></p><button id="notice-ok" class="modal-action">Continue</button></div></div><script>
+const defs={contra:'opposite',sen:'feel',mort:'death',vita:'life',sol:'comfort',mis:'wrong',gon:'angle',scope:'see',vac:'empty',struct:'build'};
+const roots=Object.keys(defs),N=7;let specials=[],board=[],selected=-1,score=0,moves=20,busy=false,round=0,lastAction=Date.now(),autoHintShown=false;const el=id=>document.getElementById(id),sleep=ms=>new Promise(r=>setTimeout(r,ms)),rand=a=>a[Math.floor(Math.random()*a.length)];
+function matches(){const result=new Set();for(let r=0;r<N;r++)for(let c=0;c<N;c++){const i=r*N+c,v=board[i];if(!v)continue;if(c<=N-3&&v===board[i+1]&&v===board[i+2]){let k=c;while(k<N&&board[r*N+k]===v)result.add(r*N+k++);}if(r<=N-3&&v===board[i+N]&&v===board[i+2*N]){let k=r;while(k<N&&board[k*N+c]===v)result.add(k++*N+c);}}return [...result];}
+function findMove(){for(let i=0;i<N*N;i++)for(const j of [i+1,i+N]){if(j>=N*N||(j===i+1&&Math.floor(i/N)!==Math.floor(j/N)))continue;[board[i],board[j]]=[board[j],board[i]];let ok=matches().length>0;[board[i],board[j]]=[board[j],board[i]];if(ok)return [i,j];}return null;}
+function hasMove(){return !!findMove();}
+function newBoard(){specials=Array(N*N).fill(0);let tries=0;do{board=[];for(let i=0;i<N*N;i++){let opts=roots.filter(v=>!(i%N>=2&&board[i-1]===v&&board[i-2]===v)&&!(i>=2*N&&board[i-N]===v&&board[i-2*N]===v));board.push(rand(opts));}}while(!hasMove()&&++tries<200);}
+function shuffleKeepingJewels(){
+ const items=board.map((root,i)=>({root,special:specials[i]}));
+ for(let attempt=0;attempt<5000;attempt++){
+  const mixed=items.slice();for(let i=mixed.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[mixed[i],mixed[j]]=[mixed[j],mixed[i]];}
+  board=mixed.map(x=>x.root);specials=mixed.map(x=>x.special);
+  if(!matches().length&&hasMove())return true;
+ }
+ // Fallback: preserve every existing jewel, including specials, and keep trying.
+ return false;
+}
+function render(){el("hint").disabled=busy||moves===0;el('score').textContent=score;el('moves').textContent=moves;el('board').replaceChildren(...board.map((v,i)=>{let b=document.createElement('button');b.className='tile'+(selected===i?' selected':'');b.dataset.root=v;b.dataset.special=specials[i]||0;b.textContent=v;if(specials[i]){const mark=document.createElement('span');mark.className='special-mark';mark.textContent=specials[i]===3?'✚':'↔';b.appendChild(mark);}b.setAttribute('aria-label',`Row ${Math.floor(i/N)+1}, column ${i%N+1}: ${v}`);b.disabled=busy||moves===0;b.onclick=()=>tap(i);return b;}));}
+function swap(i,j){[board[i],board[j]]=[board[j],board[i]];[specials[i],specials[j]]=[specials[j],specials[i]];}
+function adjacent(i,j){return Math.abs(i-j)===N||(Math.floor(i/N)===Math.floor(j/N)&&Math.abs(i-j)===1);}
+function status(t){el('status').textContent=t;}
+function flying(root,from,to,delay=0){const grid=el('board'),sample=grid.children[0],base=grid.getBoundingClientRect();const a=grid.children[from]?.getBoundingClientRect(),b=grid.children[to]?.getBoundingClientRect();if(!a||!b)return null;const ghost=document.createElement('div');ghost.className='tile flying-tile';ghost.dataset.root=root;ghost.textContent=root;ghost.style.cssText=`left:${a.left-base.left}px;top:${a.top-base.top}px;width:${a.width}px;height:${a.height}px;transition-delay:${delay}ms`;grid.appendChild(ghost);return {ghost,dx:b.left-a.left,dy:b.top-a.top};}
+async function animateSwap(i,j,reverse=false){const a=flying(board[i],i,j),b=flying(board[j],j,i);if(a){a.ghost.dataset.special=specials[i]||0;if(specials[i])a.ghost.innerHTML+=`<span class="special-mark">${specials[i]===3?'✚':'↔'}</span>`;}if(b){b.ghost.dataset.special=specials[j]||0;if(specials[j])b.ghost.innerHTML+=`<span class="special-mark">${specials[j]===3?'✚':'↔'}</span>`;}el('board').children[i].classList.add('motion-hidden');el('board').children[j].classList.add('motion-hidden');await sleep(35);for(const x of [a,b])if(x)x.ghost.style.transform=`translate(${x.dx}px,${x.dy}px)`;await sleep(355);for(const x of [a,b])x?.ghost.remove();}
+async function tap(i){if(busy||moves===0)return;resetHintTimer();if(selected<0){selected=i;render();return;}if(i===selected){selected=-1;render();return;}if(!adjacent(i,selected)){selected=i;render();return;}const prev=selected;selected=-1;busy=true;render();await animateSwap(i,prev);swap(i,prev);render();let hit=matches();if(!hit.length){await animateSwap(i,prev);swap(i,prev);status('That swap did not make a match. Try another!');busy=false;render();return;}moves--;render();const root=board[hit[0]];const game=round;const correct=await ask(root);if(game!==round)return;resetHintTimer();if(correct){let pts=hit.length===3?100:hit.length===4?200:300;score+=pts;status(`Correct! +${pts} points`);}else{status(`${root} means ${defs[root]}. Match cleared, 0 points.`);}await clearAndFall(hit,[i,prev],0,true);let chain=0;while(true){hit=matches();if(!hit.length)break;chain++;let bonus=50*Math.pow(2,Math.min(chain-1,5));status(`Cascade ×${chain+1}! +${bonus} points`);await showCascade(chain,hit);await clearAndFall(hit,null,bonus);}if(!hasMove()&&moves>0){await notice('No Moves Available','No more matches are possible. The board will shuffle!', 'Shuffle');if(game!==round)return;shuffleKeepingJewels();status('Jewels shuffled — special jewels preserved!');render();}if(moves===0){await notice('Game Over!',`Your final score is ${score.toLocaleString()} points!`, 'Play Again');if(game!==round)return;start();return;}busy=false;render();resetHintTimer();}
+function matchRuns(){const runs=[];for(let r=0;r<N;r++){let c=0;while(c<N){let e=c+1;while(e<N&&board[r*N+e]===board[r*N+c])e++;if(e-c>=3)runs.push(Array.from({length:e-c},(_,k)=>r*N+c+k));c=e;}}for(let c=0;c<N;c++){let r=0;while(r<N){let e=r+1;while(e<N&&board[e*N+c]===board[r*N+c])e++;if(e-r>=3)runs.push(Array.from({length:e-r},(_,k)=>(r+k)*N+c));r=e;}}return runs;}
+async function clearAndFall(hit,swapped=null,cascadePoints=0,isInitial=false){
+ const runs=matchRuns(),gone=new Set(hit),created=new Map();
+ // Four in a row makes a silver line blaster; five or more makes a gold cross blaster.
+ // Choose a surviving tile in the match; cascade-created jewels work identically.
+ for(const run of runs.filter(x=>x.length>=4).sort((a,b)=>b.length-a.length)){
+  const tier=run.length>=5?3:2;
+  const candidates=swapped?[...swapped.filter(i=>run.includes(i)),...run]:run;
+  const at=candidates.find(i=>!created.has(i));
+  if(at!==undefined)created.set(at,tier);
+ }
+ // Existing special gems that participate in a match detonate, potentially chaining
+ // into other existing specials. A newly created gem does not detonate immediately.
+ const queue=[...gone].filter(i=>specials[i]&&!created.has(i));
+ const triggered=new Set();
+ while(queue.length){
+  const at=queue.shift();if(triggered.has(at))continue;triggered.add(at);
+  const r=Math.floor(at/N),c=at%N,tier=specials[at];
+  const targets=[];
+  if(tier===2){ // Silver: clear the entire line in the orientation of the match.
+   const horizontal=runs.some(run=>run.includes(at)&&run.length>=3&&Math.floor(run[0]/N)===Math.floor(run[run.length-1]/N));
+   if(horizontal)for(let x=0;x<N;x++)targets.push(r*N+x);
+   else for(let y=0;y<N;y++)targets.push(y*N+c);
+  }else{ // Gold: clear the full row AND column.
+   for(let x=0;x<N;x++)targets.push(r*N+x);
+   for(let y=0;y<N;y++)targets.push(y*N+c);
+  }
+  for(const j of targets){gone.add(j);if(specials[j]&&!created.has(j)&&!triggered.has(j))queue.push(j);}
+ }
+ // New gems survive only if they are not hit by an existing gem's blast.
+ for(const at of created.keys())if(!triggered.has(at)&&!gone.has(at)){} // handled below
+ for(const at of created.keys())if(!triggered.has(at)){
+   // An explosion can destroy a freshly made special; otherwise preserve it.
+   const blasted=[...triggered].some(origin=>{
+    const or=Math.floor(origin/N),oc=origin%N,r=Math.floor(at/N),c=at%N;
+    if(specials[origin]===3)return or===r||oc===c;
+    const horizontal=runs.some(run=>run.includes(origin)&&Math.floor(run[0]/N)===Math.floor(run[run.length-1]/N));
+    return horizontal?or===r:oc===c;
+   });
+   if(!blasted)gone.delete(at);else created.delete(at);
+ }
+ let earned=cascadePoints;
+ if(triggered.size){earned+=triggered.size*100+Math.max(0,gone.size-hit.length)*25;}
+ if(earned){score+=earned;status(`${triggered.size?'Special blast! ':'Cascade! '}+${earned} points!`);}
+ const grid=el('board'),nodes=grid.children;
+ for(const i of gone)nodes[i]?.classList.add(triggered.size?'blasting':'removing');
+ await sleep(390);
+ const old=board.slice(),oldSpecial=specials.slice(),movesList=[];
+ for(let c=0;c<N;c++){
+  let dest=N-1;
+  for(let r=N-1;r>=0;r--){const from=r*N+c;
+   if(!gone.has(from)){const to=dest*N+c;board[to]=old[from];specials[to]=created.get(from)||oldSpecial[from];if(from!==to)movesList.push({from,to,root:old[from],special:specials[to]});dest--;}}
+  while(dest>=0){const to=dest*N+c;board[to]=rand(roots);specials[to]=0;movesList.push({from:-1,to,root:board[to],special:0,height:dest+1});dest--;}
+ }
+ render();const ghosts=[];const rects=[...grid.children].map(x=>x.getBoundingClientRect());const base=grid.getBoundingClientRect();
+ for(const m of movesList){const target=rects[m.to];const origin=m.from>=0?rects[m.from]:null;const g=document.createElement('div');g.className='tile flying-tile';g.dataset.root=m.root;g.dataset.special=m.special;g.textContent=m.root;
+ if(m.special){const mark=document.createElement('span');mark.className='special-mark';mark.textContent=m.special===3?'✚':'↔';g.appendChild(mark);}
+ const y=origin?origin.top-base.top:target.top-base.top-(m.height||1)*(target.height+5);const x=origin?origin.left-base.left:target.left-base.left;
+ g.style.cssText=`left:${x}px;top:${y}px;width:${target.width}px;height:${target.height}px;transition-duration:${Math.min(600,300+Math.abs(target.top-base.top-y)*.5)}ms`;
+ grid.appendChild(g);grid.children[m.to].classList.add('motion-hidden');ghosts.push({g,dx:target.left-base.left-x,dy:target.top-base.top-y});}
+ await sleep(35);for(const x of ghosts)x.g.style.transform=`translate(${x.dx}px,${x.dy}px)`;
+ await sleep(650);ghosts.forEach(x=>x.g.remove());render();await sleep(130);
+ if(created.size)status(`Special jewel created! Silver clears a line; gold clears a cross.`);
+}
+async function showCascade(chain,hit){
+ const grid=el('board');
+ for(const i of hit)grid.children[i]?.classList.add('cascade-highlight');
+ const label=document.createElement('div');label.className='cascade-banner';
+ label.textContent=chain===1?'CASCADE!':`CHAIN REACTION ×${chain+1}!`;
+ grid.appendChild(label);
+ await sleep(950);
+ label.remove();
+ for(const i of hit)grid.children[i]?.classList.remove('cascade-highlight');
+}
+function ask(root){return new Promise(resolve=>{const right=defs[root],opts=[right,...Object.values(defs).filter(v=>v!==right).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);el('question').innerHTML=`What does <strong>${root.toUpperCase()}</strong> mean?`;el('feedback').textContent='';el('choices').replaceChildren(...opts.map(v=>{let b=document.createElement('button');b.className='choice';b.textContent=v;b.onclick=()=>{const good=v===right;el('feedback').textContent=good?'Correct! 🎉':`Not quite — ${root} means ${right}.`;[...el('choices').children].forEach(x=>x.disabled=true);setTimeout(()=>{el('overlay').hidden=true;resolve(good);},850);};return b;}));el('overlay').hidden=false;});}
+function notice(title,body,button){return new Promise(resolve=>{el('notice-title').textContent=title;el('notice-body').textContent=body;el('notice-ok').textContent=button;el('notice').hidden=false;el('notice-ok').onclick=()=>{el('notice').hidden=true;resolve();};});}
+function showHint(automatic=false){if(busy||moves===0||!el('overlay').hidden||!el('notice').hidden)return;const move=findMove();if(!move)return;selected=-1;render();for(const i of move)el('board').children[i]?.classList.add('hint');status(automatic?'Need a hint? Try swapping the glowing tiles!':'Hint: swap the two glowing tiles!');autoHintShown=true;}
+function resetHintTimer(){lastAction=Date.now();autoHintShown=false;}
+setInterval(()=>{if(!busy&&moves>0&&!autoHintShown&&el('overlay').hidden&&el('notice').hidden&&Date.now()-lastAction>=10000)showHint(true);},500);
+el('hint').onclick=()=>{if(busy||moves===0)return;resetHintTimer();showHint(false);};
+function start(){resetHintTimer();round++;busy=false;selected=-1;score=0;moves=20;el('overlay').hidden=true;el('notice').hidden=true;newBoard();status('Swap adjacent roots to make three in a row!');render();}el('restart').onclick=start;start();
+</script></body></html>
